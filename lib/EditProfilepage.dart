@@ -118,7 +118,7 @@ class _EditPageState extends State<EditPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Welcome(),
+                    builder: (context) => DashBoard(),
                   ),
                 );
                 debugPrint('Clicked RaisedButton Button');

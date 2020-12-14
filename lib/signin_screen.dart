@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'signup_screen.dart';
+import 'welcome.dart';
 import 'EditProfilepage.dart';
 import 'home.dart';
 
@@ -33,7 +34,7 @@ class _State extends State<Signin> {
           textColor: Colors.white,
           fontSize: 20.0);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => EditPage()));
+          context, MaterialPageRoute(builder: (context) => DashBoard()));
     } else {
       Fluttertoast.showToast(
           msg: "Username and Password Incorrect",
