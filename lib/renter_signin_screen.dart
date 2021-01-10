@@ -2,22 +2,22 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'signup_screen.dart';
+import 'renter_signup_screen.dart';
 import 'welcome_renters.dart';
 
 import 'home.dart';
 
-class Signin extends StatefulWidget {
+class RenterSignin extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<Signin> {
+class _State extends State<RenterSignin> {
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
 
   Future login() async {
-    var url = "http://192.168.254.121:8080/roomers_api/login.php";
+    var url = "http://192.168.254.121:8080/apiroomers/renter_login.php";
 
     var response = await http.post(url, body: {
       "email": email.text,
@@ -84,7 +84,7 @@ class _State extends State<Signin> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'Owner Sign In',
+                      'Renter Sign In',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w500,
@@ -127,8 +127,10 @@ class _State extends State<Signin> {
                       child: Text('Sign In'),
                       onPressed: () {
                         login();
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Signin()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RenterSignin()));
                       },
                     )),
                 FlatButton(
@@ -151,7 +153,7 @@ class _State extends State<Signin> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupScreen()));
+                                builder: (context) => RenterSignupScreen()));
                       },
                     )
                   ],

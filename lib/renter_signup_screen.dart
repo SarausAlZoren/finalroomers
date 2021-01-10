@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:fluttertoast/fluttertoast.dart';
-import 'signin_screen.dart';
+import 'renter_signin_screen.dart';
 
-class SignupScreen extends StatefulWidget {
+class RenterSignupScreen extends StatefulWidget {
   @override
   _State createState() => _State();
 }
 
-class _State extends State<SignupScreen> {
+class _State extends State<RenterSignupScreen> {
   TextEditingController lastname = TextEditingController();
   TextEditingController firstname = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -18,7 +18,7 @@ class _State extends State<SignupScreen> {
   TextEditingController contactnumber = TextEditingController();
 
   Future register() async {
-    var url = "http://192.168.254.121:8080/roomers_api/register.php";
+    var url = "http://192.168.254.121:8080/apiroomers/renter_register.php";
     var response = await http.post(url, body: {
       "lastname": lastname.text,
       "firstname": firstname.text,
@@ -46,7 +46,7 @@ class _State extends State<SignupScreen> {
           textColor: Colors.white,
           fontSize: 16.0);
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Signin()));
+          context, MaterialPageRoute(builder: (context) => RenterSignin()));
     }
   }
 
@@ -68,7 +68,7 @@ class _State extends State<SignupScreen> {
                   toolbarHeight: 30,
                   elevation: 00.0,
                   title: Text(
-                    'Owner Registration ',
+                    'Renter Registration ',
                     style:
                         TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                   ),
@@ -180,7 +180,8 @@ class _State extends State<SignupScreen> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Signin()));
+                                          builder: (context) =>
+                                              RenterSignin()));
                                 },
                               )
                             ],

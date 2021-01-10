@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'signup_screen.dart';
-import 'signin_screen.dart';
+import 'renter_signup_screen.dart';
+import 'renter_signin_screen.dart';
+import 'owner_signup.dart';
+import 'owner_signin.dart';
 
 void clickMe() {
   print('Button Click');
@@ -67,13 +69,15 @@ class _WelcomePageState extends State<WelcomePage> {
                   padding: EdgeInsets.all(height / 40),
                   textColor: Colors.white,
                   color: Colors.teal[600],
-                  onPressed: () => _onAlertWithCustomContentPressed(context),
+                  onPressed: () =>
+                      _onAlertWithCustomContentPressedOwner(context),
                   child: new Text(
                     "Owner",
                   ),
                 ),
                 new RaisedButton(
-                  onPressed: () => _onAlertWithCustomContentPressed(context),
+                  onPressed: () =>
+                      _onAlertWithCustomContentPressedRenter(context),
                   textColor: Colors.white,
                   color: Colors.teal[600],
                   shape: RoundedRectangleBorder(
@@ -102,13 +106,40 @@ Widget FadeAlertAnimation(BuildContext context, Animation<double> animation,
   );
 }
 
-_onAlertWithCustomContentPressed(context) {
-  Alert(context: context, title: "ROOMERS", buttons: [
+_onAlertWithCustomContentPressedRenter(context) {
+  Alert(context: context, title: "ROOMERS RENTER", buttons: [
     DialogButton(
       color: Colors.cyanAccent[700],
       onPressed: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Signin()));
+            .push(MaterialPageRoute(builder: (context) => RenterSignin()));
+      },
+      child: Text(
+        "SIGN-IN",
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),
+    ),
+    DialogButton(
+      color: Colors.greenAccent[700],
+      onPressed: () {
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => RenterSignupScreen()));
+      },
+      child: Text(
+        "SIGN-UP",
+        style: TextStyle(color: Colors.white, fontSize: 20),
+      ),
+    ),
+  ]).show();
+}
+
+_onAlertWithCustomContentPressedOwner(context) {
+  Alert(context: context, title: "ROOMERS OWNER", buttons: [
+    DialogButton(
+      color: Colors.cyanAccent[700],
+      onPressed: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => OwnerSignin()));
       },
       child: Text(
         "SIGN-IN",
@@ -119,7 +150,7 @@ _onAlertWithCustomContentPressed(context) {
       color: Colors.greenAccent[700],
       onPressed: () {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => SignupScreen()));
+            .push(MaterialPageRoute(builder: (context) => OwnerSignupScreen()));
       },
       child: Text(
         "SIGN-UP",
